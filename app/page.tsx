@@ -1,5 +1,5 @@
 "use client";
-import { IsAuthenticated } from "@/components/HOC/isAuth/IsAuthenticated";
+import { Page } from "@/components/HOC/isAuth/IsAuthenticated";
 import Loading from "@/components/UI/Loading/Loading";
 import NewNote from "@/components/form/Note/NewNote";
 import { NoteContext } from "@/context/NoteContext/NoteContext";
@@ -32,4 +32,4 @@ const page = () => {
   }
 };
 
-export default IsAuthenticated(page);
+export default Page(page);

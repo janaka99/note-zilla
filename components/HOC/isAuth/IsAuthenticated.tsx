@@ -10,7 +10,7 @@ import React, {
 } from "react";
 import { FaArrowRight } from "react-icons/fa6";
 
-export function IsAuthenticated(Component: ComponentType<any>) {
+export function Page(Component: ComponentType<any>) {
   return function WithAuth(props: ComponentProps<any>) {
     const { isAuthenticated, checkUser, isLoading } = useContext(AuthContext);
     const path = usePathname();
