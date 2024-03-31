@@ -1,33 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Style+Script&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+  }
+}
+
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-100: #202020;
+  --background-500: #191919;
+
+  --primary-100: #eeeeee;
+  --primary-500: #ffffff;
+
+  --secondary-100: #eeeeee;
+  --secondary-500: #ffffff;
+
+  --accent-100: #76abae;
+  --accent-500: #76abae;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.scroll-bar::-webkit-scrollbar {
+  border: none;
+  width: 12px;
 }
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.scroll-bar::-webkit-scrollbar-thumb {
+  background-color: #585959; /* Color of the thumb */
+  border-radius: 5px; /* Border radius of the thumb */
 }

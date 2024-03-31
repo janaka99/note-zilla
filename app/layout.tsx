@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Header from "@/containers/Header/Header";
+import { Toaster } from "react-hot-toast";
+import AuthState from "@/context/AuthContext/AuthState";
+import NoteState from "@/context/NoteContext/NoteState";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +20,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className="bg-background-500 min-h-svh w-full flex flex-col justify-between">
+        <AuthState>
+          <NoteState>
+            <Header />
+
+            {children}
+            <Toaster />
+          </NoteState>
+        </AuthState>
+      </body>
     </html>
   );
 }
