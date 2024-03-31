@@ -17,8 +17,8 @@ type Note = {
 };
 
 const Page = () => {
-  const { getNotes, notes: allNotes, isNotesLoading } = useContext(NoteContext);
-  const { isAuthenticated, checkUser, isLoading } = useContext(AuthContext);
+  const { getNotes, notes, isNotesLoading } = useContext(NoteContext);
+  const { isAuthenticated, isLoading } = useContext(AuthContext);
   const path = usePathname();
 
   const [note, setNote] = useState<Note>({
@@ -27,14 +27,14 @@ const Page = () => {
     noteId: "",
   });
 
-  const { useApi } = useGetApi();
+  const API = useGetApi();
 
   let noteId = usePathname();
   noteId = noteId.substring(1);
-  console.log(noteId);
+
   const getNote = async () => {
     try {
-      const res = await useApi().get(`note/get/${noteId}`);
+      const res = await API.get(`note/get/${noteId}`);
       if (res.status == 200) {
         setNote({
           title: res.data.title,
@@ -91,7 +91,7 @@ const Page = () => {
     }
   }
 
-  if (allNotes.length == 0 && !isNotesLoading) {
+  if (notes.length == 0 && !isNotesLoading) {
     return (
       <div className=" min-h-svh flex flex-col justify-center items-center">
         <h1 className="text-2xl mb-2 text-primary-500">
