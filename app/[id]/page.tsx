@@ -51,6 +51,7 @@ const Page = () => {
     getNote();
     getNotes();
   }, [noteId]);
+
   if (isLoading) {
     return <Loading />;
   }
