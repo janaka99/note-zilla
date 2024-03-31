@@ -2,13 +2,11 @@
 import { IsAuthenticated } from "@/components/HOC/isAuth/IsAuthenticated";
 import Loading from "@/components/UI/Loading/Loading";
 import NewNote from "@/components/form/Note/NewNote";
-import SideBar from "@/containers/Sidebar/SideBar";
 import { NoteContext } from "@/context/NoteContext/NoteContext";
 import { useRouter } from "next/navigation";
 import React, { useContext, useEffect, useState } from "react";
 
 const page = () => {
-  const [isLoading, setIsLoading] = useState(true);
   const { push } = useRouter();
   const { getNotes, notes, isNotesLoading } = useContext(NoteContext);
 

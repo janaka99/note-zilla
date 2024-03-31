@@ -9,7 +9,6 @@ import toast from "react-hot-toast";
 type Props = {
   note: Note;
   setNote: React.Dispatch<React.SetStateAction<any>>;
-  getData: () => void;
 };
 
 type Note = {
@@ -18,7 +17,7 @@ type Note = {
   noteId: string;
 };
 
-const ManageNote = ({ note, setNote, getData }: Props) => {
+const ManageNote = ({ note, setNote }: Props) => {
   const { useApi } = useGetApi();
   const { push } = useRouter();
   let noteId = usePathname();
