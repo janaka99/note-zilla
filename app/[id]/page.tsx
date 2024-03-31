@@ -96,7 +96,7 @@ const Page = () => {
     return (
       <div className=" min-h-svh flex flex-col justify-center items-center">
         <h1 className="text-2xl mb-2 text-primary-500">
-          You don't have any notes
+          You don&apos;t have any notes
         </h1>
         <NewNote />
       </div>
