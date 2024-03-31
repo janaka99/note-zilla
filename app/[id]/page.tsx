@@ -16,7 +16,7 @@ type Note = {
   noteId: string;
 };
 
-const page = () => {
+const Page = () => {
   const { getNotes, notes: allNotes, isNotesLoading } = useContext(NoteContext);
   const { isAuthenticated, checkUser, isLoading } = useContext(AuthContext);
   const path = usePathname();
@@ -114,4 +114,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

@@ -8,7 +8,7 @@ import { usePathname, useRouter } from "next/navigation";
 import React, { useContext, useEffect, useState } from "react";
 import { FaArrowRight } from "react-icons/fa6";
 
-const page = () => {
+const Page = () => {
   const { push } = useRouter();
   const { getNotes, notes, isNotesLoading } = useContext(NoteContext);
   const { isAuthenticated, checkUser, isLoading } = useContext(AuthContext);
@@ -70,4 +70,4 @@ const page = () => {
   }
 };
 
-export default page;
+export default Page;
