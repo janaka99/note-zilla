@@ -25,8 +25,7 @@ export const initialState: AuthState = {
 };
 
 const AuthState = ({ children }: props) => {
-  const { useApi } = useGetApi();
-
+  const API = useGetApi();
   const [state, dispatch] = useReducer(AuthRedcuer, initialState);
 
   const login = async (credentials: any) => {
@@ -34,10 +33,7 @@ const AuthState = ({ children }: props) => {
       dispatch({
         type: LOGIN_CALL,
       });
-      const res = await useApi().post(
-        `auth/login`,
-        JSON.stringify(credentials)
-      );
+      const res = await API.post(`auth/login`, JSON.stringify(credentials));
 
       if (res.status == 200 && res.data.token) {
         localStorage.setItem("notezilla_token", res.data.token);
@@ -65,10 +61,7 @@ const AuthState = ({ children }: props) => {
       dispatch({
         type: REGISTER_CALL,
       });
-      const res = await useApi().post(
-        `auth/register`,
-        JSON.stringify(credentials)
-      );
+      const res = await API.post(`auth/register`, JSON.stringify(credentials));
 
       if (res.status == 200 && res.data.token) {
         localStorage.setItem("notezilla_token", res.data.token);
@@ -96,7 +89,7 @@ const AuthState = ({ children }: props) => {
       dispatch({
         type: LOGIN_CALL,
       });
-      const res = await useApi().get("auth/validate-user");
+      const res = await API.get("auth/validate-user");
       if (res.status == 200) {
         dispatch({
           type: LOGIN_SUCCESS,

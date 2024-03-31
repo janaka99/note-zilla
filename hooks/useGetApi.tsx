@@ -1,28 +1,31 @@
+import { useState, useEffect } from "react";
 import axios from "axios";
-import React from "react";
 
 const useGetApi = () => {
-  const API = axios.create({
-    baseURL: "http://localhost:3000/api/",
-  });
+  const [api, setApi] = useState<any>(null);
 
-  const useApi = () => {
+  useEffect(() => {
     const token = localStorage.getItem("notezilla_token");
 
-    API.interceptors.request.use(
-      (config) => {
-        if (token) {
-          config.headers.Authorization = `Bearer ${token}`;
-        }
-        return config;
-      },
-      (error) => {
-        return;
+    const API = axios.create({
+      baseURL: "http://localhost:3000/api/",
+    });
+
+    const requestInterceptor = API.interceptors.request.use((config) => {
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
       }
-    );
-    return API;
-  };
-  return { useApi };
+      return config;
+    });
+
+    setApi(API);
+
+    return () => {
+      axios.interceptors.request.eject(requestInterceptor);
+    };
+  }, []);
+
+  return api;
 };
 
 export default useGetApi;

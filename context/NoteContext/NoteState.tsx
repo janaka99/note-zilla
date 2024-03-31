@@ -23,7 +23,7 @@ export const initialState: NotesState = {
 };
 
 const NoteState = ({ children }: props) => {
-  const { useApi } = useGetApi();
+  const API = useGetApi();
 
   const [state, dispatch] = useReducer(NoteReducer, initialState);
 
@@ -32,7 +32,7 @@ const NoteState = ({ children }: props) => {
       dispatch({
         type: GET_NOTES_CALL,
       });
-      const res = await useApi().get("note/all");
+      const res = await API.get("note/all");
 
       if (res.status == 200) {
         dispatch({

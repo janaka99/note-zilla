@@ -5,11 +5,11 @@ import React from "react";
 import { FaPlus } from "react-icons/fa6";
 
 const NewNote = () => {
-  const { useApi } = useGetApi();
+  const API = useGetApi();
   const { push } = useRouter();
   const addNewNote = async () => {
     try {
-      const res = await useApi().post(`note/new`);
+      const res = await API.post(`note/new`);
       if (res.status == 200) {
         console.log(res.data);
         push(`/${res.data.noteId}`);

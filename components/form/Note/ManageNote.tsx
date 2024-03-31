@@ -18,7 +18,7 @@ type Note = {
 };
 
 const ManageNote = ({ note, setNote }: Props) => {
-  const { useApi } = useGetApi();
+  const API = useGetApi();
   const { push } = useRouter();
   let noteId = usePathname();
   noteId = noteId.substring(1);
@@ -31,7 +31,7 @@ const ManageNote = ({ note, setNote }: Props) => {
   const handleDeleteNote = async (id: string) => {
     try {
       setIsDeleting(true);
-      const res = await useApi().delete(`note/delete/${id}`);
+      const res = await API.delete(`note/delete/${id}`);
       if (res.status == 200) {
         getNotes();
         toast.success(res.data.message);
@@ -63,7 +63,7 @@ const ManageNote = ({ note, setNote }: Props) => {
     }
     setIsUpdating(true);
     try {
-      const res = await useApi().post(`note/update`, JSON.stringify(note));
+      const res = await API.post(`note/update`, JSON.stringify(note));
       if (res.status == 200) {
         getNotes();
         setNote({
